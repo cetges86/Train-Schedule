@@ -1,0 +1,17 @@
+.body {
+    background-color: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+.jumbotron {
+    background-color: black;
+    color: white;
+    text-align: center
+}
+.panel-default>.panel-heading {
+    background-color:  rgb(70, 70, 172);
+    color: white;
+}
+.submit-button {
+    background-color: rgb(70, 70, 172); 
+    color: white;
+}

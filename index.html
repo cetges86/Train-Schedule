@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>CoderBay</title>
+    <!-- Bootstrap CDN-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="row">
+        <div class="container">
+            <!-- Jumbotron Title -->
+            <div class="jumbotron">
+                <h1 class="text-center">Employee Data Management</h1>
+                <h3 class="text-center">A Comprehensive Directory of Employee Billable Hours</h3>
+            </div>
+            <div class="row">
+                <div class="container">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Add Employee</h3>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Employee Name</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Start Date</th>
+                                    <th scope="col">Months Worked</th>
+                                    <th scope="col">Monthly Rate ($)</th>
+                                    <th scope="col">Total Billed ($)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-data">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Add Employee</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form>
+                            <div class="form-group">
+                                <h5>Employee Name</h5>
+                                <input type="text" class="form-control" id="name" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <h5>Role</h5>
+                                <input type="text" class="form-control" id="role" placeholder="Role">
+                            </div>
+                            <div class="form-group">
+                                <h5>Start Date (MM/DD/YYYY)</h5>
+                                <input type="text" class="form-control" id="start-date" placeholder="Start Date">
+                            </div>
+                            <div class="form-group">
+                                <h5>Monthly Rate</h5>
+                                <input type="text" class="form-control" id="monthly-rate" placeholder="Monthly Rate">
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary submit-button" id="submit-button">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Firebase link -->
+<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+<!-- JS linking -->
+<script type="text/javascript" src="assets/javascript/script.js"></script>
+</html>
