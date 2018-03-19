@@ -2,7 +2,7 @@
 <html lang="en-us">
 <head>
     <meta charset="UTF-8">
-    <title>CoderBay</title>
+    <title>Train Schedule</title>
     <!-- Bootstrap CDN-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -12,24 +12,29 @@
         <div class="container">
             <!-- Jumbotron Title -->
             <div class="jumbotron">
-                <h1 class="text-center">Employee Data Management</h1>
-                <h3 class="text-center">A Comprehensive Directory of Employee Billable Hours</h3>
+                <h1 class="text-center">Train Scheduling Tool</h1>
+                <h3 class="text-center">Add a Train to your Itinerary</h3>
+            </div>
+            <div class="row">
+                <div class="text-center">
+                    <div id="time-display"></div>
+                </div>
             </div>
             <div class="row">
                 <div class="container">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Add Employee</h3>
+                            <h3 class="panel-title">Add Upcoming Train</h3>
                         </div>
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Employee Name</th>
-                                    <th scope="col">Role</th>
-                                    <th scope="col">Start Date</th>
-                                    <th scope="col">Months Worked</th>
-                                    <th scope="col">Monthly Rate ($)</th>
-                                    <th scope="col">Total Billed ($)</th>
+                                    <th scope="col">Train Name</th>
+                                    <th scope="col">Destination</th>
+                                    <th scope="col">Last Train</th>
+                                    <th scope="col">Frequency (min)</th>
+                                    <th scope="col">Next Arrival</th>
+                                    <th scope="col">Minutes Away</th>
                                 </tr>
                             </thead>
                             <tbody class="table-data">
@@ -43,25 +48,25 @@
             <div class="container">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Add Employee</h3>
+                        <h3 class="panel-title">Add Train</h3>
                     </div>
                     <div class="panel-body">
                         <form>
                             <div class="form-group">
-                                <h5>Employee Name</h5>
+                                <h5>Train Name</h5>
                                 <input type="text" class="form-control" id="name" placeholder="Name">
                             </div>
                             <div class="form-group">
-                                <h5>Role</h5>
-                                <input type="text" class="form-control" id="role" placeholder="Role">
+                                <h5>Destination</h5>
+                                <input type="text" class="form-control" id="destination" placeholder="Destination">
                             </div>
                             <div class="form-group">
-                                <h5>Start Date (MM/DD/YYYY)</h5>
-                                <input type="text" class="form-control" id="start-date" placeholder="Start Date">
+                                <h5>Last Train Time (HH:MM AM/PM)</h5>
+                                <input type="time" class="form-control" id="last-time" placeholder="Last Time">
                             </div>
                             <div class="form-group">
-                                <h5>Monthly Rate</h5>
-                                <input type="text" class="form-control" id="monthly-rate" placeholder="Monthly Rate">
+                                <h5>Frequency (min)</h5>
+                                <input type="text" class="form-control" id="frequency" placeholder="Frequency">
                             </div>
                             <br>
                             <button type="submit" class="btn btn-primary submit-button" id="submit-button">Submit</button>
@@ -73,6 +78,8 @@
 </body>
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Moment.js link -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
 <!-- Firebase link -->
 <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 <!-- JS linking -->

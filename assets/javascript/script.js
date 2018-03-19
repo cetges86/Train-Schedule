@@ -7,65 +7,77 @@ $(document).ready(function () {
         projectId: "train-scheduler-db-8ccc3",
         storageBucket: "",
         messagingSenderId: "1058123752513"
-      };
-      firebase.initializeApp(config);
+    };
+    firebase.initializeApp(config);
+
     // variable reference to the database
     var database = firebase.database();
     // initial variables
     var name = '';
-    var role = '';
-    var startDate = '';
-    var monthlyRate = 0;
-    var totalBilled = 0;
-    var monthsWorked = 0;
+    var destination = '';
+    var firstTime = '';
+    var frequency = 0;
+  
+
+    //clock feature
+    function timedUpdate() {
+        updateClock();
+        setTimeout(timedUpdate, 1000);
+    }
+    
+    function updateClock() {
+        var now = moment().format('LTS')
+        $('#time-display').html(`<h1>${now}</h1>`);
+    }
+    
+    timedUpdate();
+
     // submit button
     $('#submit-button').on('click', function (event) {
         //prevent page from refreshing
         event.preventDefault();
         // need to change ids based on form ids
         name = $('#name').val().trim();
-        role = $('#role').val().trim();
-        startDate = $('#start-date').val().trim();
-        monthlyRate = $('#monthly-rate').val().trim();
-        var newDate = $('#start-date').val().trim();
+        destination = $('#destination').val().trim();
+        firstTime = $('#last-time').val().trim();
+        frequency = $('#frequency').val().trim();
 
-        newDate = new Date(newDate);
-        var today = new Date();
-        var dif = today - newDate;
-        //2629743 seconds in a month(on average), divided by 1000 ms in a second
-        var monthsWorked = Math.floor((dif / 2629743) / 1000);
-        console.log(monthsWorked);
-        totalBilled = Math.round(monthsWorked * monthlyRate);
+        var nextTrain = moment(firstTime,"HH:mm").add(frequency, 'm').format('HH:mm');
+        var timeAway = moment(nextTrain,"HH:mm").fromNow('m');
         
+
         database.ref().push({
             name: name,
-            role: role,
-            startDate: startDate,
-            monthlyRate: monthlyRate,
-            monthsWorked: monthsWorked,
-            totalBilled: totalBilled,
+            destination: destination,
+            frequency: frequency,
+            firstTime:firstTime,
+            nextTrain: nextTrain,
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
         name = $('#name').val("");
-        role = $('#role').val("");
-        startDate = $('#start-date').val("");
-        monthlyRate = $('#monthly-rate').val("");
+        destination = $('#destination').val("");
+        firstTime = $('#last-time').val("");
+        frequency = $('#frequency').val("");
     });
-    
+
     database.ref().on("child_added", function (snapshot) {
         var sv = snapshot.val();
+        nextTrain = moment().add(sv.frequency, 'm').format('HH:mm');
+        console.log(nextTrain);
+        var timeAway = moment().fromNow('m');
+
+        timeAway.from(nextTrain);
+
+
         var newRow = $('<tr>');
         newRow.append('<td>' + sv.name + '</td>');
-        newRow.append('<td>' + sv.role + '</td>');
-        newRow.append('<td>' + sv.startDate + '</td>');
-        newRow.append('<td>' + sv.monthlyRate + '</td>');
-        newRow.append('<td>' + sv.monthsWorked + '</td>');
-        newRow.append('<td>' + sv.totalBilled + '</td>');
+        newRow.append('<td>' + sv.destination + '</td>');
+        newRow.append('<td>' + sv.firstTime + '</td>');
+        newRow.append('<td>' + sv.frequency + '</td>');
+        newRow.append('<td>' + sv.nextTrain + '</td>');
+        newRow.append('<td>' + timeAway + '</td>');
+        
         $('.table-data').append(newRow);
-        console.log(sv.name);
-        console.log(sv.role);
-        console.log(sv.startDate);
-        console.log(sv.monthlyRate);
-        console.log(sv.totalBilled);
+
     });
 });
