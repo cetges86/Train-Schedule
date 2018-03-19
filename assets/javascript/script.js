@@ -62,11 +62,10 @@ $(document).ready(function () {
 
     database.ref().on("child_added", function (snapshot) {
         var sv = snapshot.val();
-        nextTrain = moment().add(sv.frequency, 'm').format('HH:mm');
-        console.log(nextTrain);
-        var timeAway = moment().fromNow('m');
-
-        timeAway.from(nextTrain);
+        // nextTrain = moment().add(sv.frequency, 'm').format('HH:mm');
+        var timeAway = moment(sv.nextTrain,"HH:mm").from(moment());
+        
+    
 
 
         var newRow = $('<tr>');
