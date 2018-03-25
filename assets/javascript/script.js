@@ -26,6 +26,8 @@ $(document).ready(function () {
     function updateClock() {
         var now = moment().format('LTS')
         $('#time-display').html(`<h1>${now}</h1>`);
+        var today = moment().format("MMMM Do YYYY")
+        $('#time-display').append(`<h2>${today}</h2>`)
     }
 
     timedUpdate();

@@ -5,42 +5,56 @@
 }
 
 #video-background { 
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        overflow: hidden;
-        z-index: -100;
-        width:100%;
-        margin: -6% 0 7% 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+    width:100%;
+    margin: -6% 0 7% 0;
           
 }
 
 
 .jumbotron {
-
     position: relative;
     z-index:-99;
     background: rgba(255, 255, 255, 0.3); 
     color: black;
     text-align: center;
     height:80vh;
-   
 }
 
 h1, h2{
     font-family: 'Faster One', sans-serif;
     font-size: 200%;
-    opacity: .65;
+    opacity: .7;
+}
 
+button, h3, h4, h5, th, td {
+    font-family: 'Ubuntu', sans-serif;
     
 }
+
+.panel {
+    opacity: 0.85;
+    border: none;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.panel_title {
+    opacity: 1;
+
+}
+
 .panel-default>.panel-heading {
-    background-color:  rgb(70, 70, 172);
+    background: linear-gradient(to right, rgba(255,0,0,.2), rgba(255,0,0,1));
     color: white;
 }
+
 .submit-button {
-    background-color: rgb(70, 70, 172); 
+    background: linear-gradient(to right, rgba(255,0,0,.2), rgba(255,0,0,1)); 
     color: white;
 }
