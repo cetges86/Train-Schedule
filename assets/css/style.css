@@ -1,11 +1,40 @@
 .body {
-    background-color: white;
-    font-family: 'Times New Roman', Times, serif;
-}
-.jumbotron {
     background-color: black;
-    color: white;
-    text-align: center
+    font-family: 'Times New Roman', Times, serif;
+    overflow: hidden;
+}
+
+#video-background { 
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: -100;
+        width:100%;
+        margin: -6% 0 7% 0;
+          
+}
+
+
+.jumbotron {
+
+    position: relative;
+    z-index:-99;
+    background: rgba(255, 255, 255, 0.3); 
+    color: black;
+    text-align: center;
+    height:80vh;
+   
+}
+
+h1, h2{
+    font-family: 'Faster One', sans-serif;
+    font-size: 200%;
+    opacity: .65;
+
+    
 }
 .panel-default>.panel-heading {
     background-color:  rgb(70, 70, 172);

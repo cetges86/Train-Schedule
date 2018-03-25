@@ -9,7 +9,6 @@ $(document).ready(function () {
         messagingSenderId: "1058123752513"
     };
     firebase.initializeApp(config);
-
     // variable reference to the database
     var database = firebase.database();
     // initial variables
@@ -17,19 +16,18 @@ $(document).ready(function () {
     var destination = '';
     var firstTime = '';
     var frequency = 0;
-  
 
     //clock feature
     function timedUpdate() {
         updateClock();
         setTimeout(timedUpdate, 1000);
     }
-    
+
     function updateClock() {
         var now = moment().format('LTS')
         $('#time-display').html(`<h1>${now}</h1>`);
     }
-    
+
     timedUpdate();
 
     // submit button
@@ -42,15 +40,15 @@ $(document).ready(function () {
         firstTime = $('#last-time').val().trim();
         frequency = $('#frequency').val().trim();
 
-        var nextTrain = moment(firstTime,"HH:mm").add(frequency, 'm').format('HH:mm');
-        var timeAway = moment(nextTrain,"HH:mm").fromNow('m');
-        
+        var nextTrain = moment(firstTime, "HH:mm").add(frequency, 'm').format('HH:mm');
+        var timeAway = moment(nextTrain, "HH:mm").fromNow('m');
+
 
         database.ref().push({
             name: name,
             destination: destination,
             frequency: frequency,
-            firstTime:firstTime,
+            firstTime: firstTime,
             nextTrain: nextTrain,
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
@@ -63,9 +61,9 @@ $(document).ready(function () {
     database.ref().on("child_added", function (snapshot) {
         var sv = snapshot.val();
         // nextTrain = moment().add(sv.frequency, 'm').format('HH:mm');
-        var timeAway = moment(sv.nextTrain,"HH:mm").from(moment());
-        
-    
+        var timeAway = moment(sv.nextTrain, "HH:mm").from(moment());
+
+
 
 
         var newRow = $('<tr>');
@@ -75,7 +73,7 @@ $(document).ready(function () {
         newRow.append('<td>' + sv.frequency + '</td>');
         newRow.append('<td>' + sv.nextTrain + '</td>');
         newRow.append('<td>' + timeAway + '</td>');
-        
+
         $('.table-data').append(newRow);
 
     });
